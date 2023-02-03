@@ -1,135 +1,107 @@
-![theHarvester](https://github.com/laramies/theHarvester/blob/master/theHarvester-logo.png)
+# theHarvester
 
-![TheHarvester CI](https://github.com/laramies/theHarvester/workflows/TheHarvester%20Python%20CI/badge.svg) ![TheHarvester Docker Image CI](https://github.com/laramies/theHarvester/workflows/TheHarvester%20Docker%20Image%20CI/badge.svg)
-[![Rawsec's CyberSecurity Inventory](https://inventory.raw.pm/img/badges/Rawsec-inventoried-FF5050_flat_without_logo.svg)](https://inventory.raw.pm/)
+![theharvester-logo](https://user-images.githubusercontent.com/106522935/193584706-56b7fd19-5951-4161-bdc6-1963353ff286.svg)
 
-What is this?
--------------
-theHarvester is a simple to use, yet powerful tool designed to be used during the reconnaissance stage of a red<br>
-team assessment or penetration test. It performs open source intelligence (OSINT) gathering to help determine<br>
-a domain's external threat landscape. The tool gathers names, emails, IPs, subdomains, and URLs by using<br>
-multiple public resources that include:<br>
+# About theHarvester
+theHarvester is a very simple to use, yet powerful and effective tool designed to be used in the early stages of a penetration test or red team engagement. Use it for open source intelligence (OSINT) gathering to help determine a company's external threat landscape on the internet. The tool gathers emails, names, subdomains, IPs and URLs using multiple public data source.
 
-Passive:
---------
-* anubis: Anubis-DB - https://github.com/jonluca/anubis
+# How to install it?
+This is a by default tool in kali linux. So you just need to update the harvester tool.
 
-* bevigil: CloudSEK BeVigil scans mobile application for OSINT assets and makes them available through an API - https://bevigil.com/osint-api
+For confirmation open terminal and type ‘theharvester’ and verify it. If  you see ‘command not found’ error raised continue to the installation process. Else skip the installation process.
 
-* baidu: Baidu search engine - www.baidu.com
+# Installation:
+In terminal type:
 
-* binaryedge: List of known subdomains from www.binaryedge.io
+            $ sudo apt-get theharvester
+If it doesn’t work you can try to clone it directly from git using the following commands
 
-* bing: Microsoft search engine - www.bing.com
+            $ git clone https://github.com/laramies/theHarvester.git
+            $ cd theHarvester
+            $ sudo pip3 install -r requirements.txt
+            $ sudo python3 ./theHarvester.py
+            
+# Upgrading:
+use the following command to upgrade the harvester
 
-* bingapi: Microsoft search engine, through the API (Requires an API key, see below.)
+            $ sudo apt-get upgrade theharvester
 
-* bufferoverun: https://tls.bufferover.run
+# How to use this harvester tool ?
 
-* censys: [Censys search engine](https://search.censys.io/), will use certificates searches to enumerate subdomains and gather emails (Requires an API key, see below.) - [censys.io](https://censys.io/)
+ root@kali:~# theHarvester -h
+ 
+![173199264-f445ce77-8da7-4b4f-bef1-51ba4b72b408](https://user-images.githubusercontent.com/106522935/193582052-78b3514f-b3ab-411c-83e1-fd8dfd4fa9b3.png)
 
-* certspotter: Cert Spotter monitors Certificate Transparency logs - https://sslmate.com/certspotter/
+Usage:
 
-* crtsh: Comodo Certificate search - https://crt.sh
-
-* dnsdumpster: DNSdumpster search engine - https://dnsdumpster.com
-
-* duckduckgo: DuckDuckGo search engine - www.duckduckgo.com
-
-* fullhunt: The Next-Generation Attack Surface Security Platform - https://fullhunt.io
-
-* github-code: GitHub code search engine (Requires a GitHub Personal Access Token, see below.) - www.github.com
-
-* hackertarget: Online vulnerability scanners and network intelligence to help organizations - https://hackertarget.com
-
-* hunter: Hunter search engine (Requires an API key, see below.) - www.hunter.io
-
-* intelx: Intelx search engine (Requires an API key, see below.) - www.intelx.io
-
-* omnisint: Project Crobat, A Centralised Searchable Open Source Project Sonar DNS Database - https://github.com/Cgboal/SonarSearch
-
-* otx: AlienVault Open Threat Exchange - https://otx.alienvault.com
-
-* pentesttools: Powerful Penetration Testing Tools, Easy to Use (Requires an API key, see below.) - https://pentest-tools.com/home
-
-* projecdiscovery: We actively collect and maintain internet-wide assets data,
-  to enhance research and analyse changes around DNS for better insights (Requires an API key, see below.) - https://chaos.projectdiscovery.io
-
-* qwant: Qwant search engine - www.qwant.com
-
-* rapiddns: DNS query tool which make querying subdomains or sites of a same IP easy! https://rapiddns.io
-
-* rocketreach: Access real-time verified personal/professional emails, phone numbers, and social media links. - https://rocketreach.co
-
-* securityTrails: Security Trails search engine, the world's largest repository of historical DNS data<br>
-  (Requires an API key, see below.) - www.securitytrails.com
-
-* shodan: Shodan search engine, will search for ports and banners from discovered hosts (Requires an API key, see below.) - www.shodanhq.com
-
-* sublist3r: Fast subdomains enumeration tool for penetration testers - https://api.sublist3r.com/search.php?domain=example.com
-
-* threatcrowd: Open source threat intelligence - www.threatcrowd.org
-
-* threatminer: Data mining for threat intelligence - https://www.threatminer.org/
-
-* urlscan: A sandbox for the web that is a URL and website scanner - https://urlscan.io
-
-* vhost: Bing virtual hosts search
-
-* virustotal: virustotal.com domain search
-
-* yahoo: Yahoo search engine
-
-* zoomeye: China version of shodan - https://www.zoomeye.org
+       $ theHarvester [-h] -d DOMAIN [-l LIMIT] [-S START] [-g] [-p] [-s] [--screenshot SCREENSHOT] [-v] [-e DNS_SERVER [-t DNS_TLD] [-r] [-n] [-c] [-f FILENAME] [-b SOURCE]
 
 
-Active:
--------
-* DNS brute force: dictionary brute force enumeration
-* Screenshots: Take screenshots of subdomains that were found
+ options:
 
-Modules that require an API key:
---------------------------------
-Documentation to setup API keys can be found at - https://github.com/laramies/theHarvester/wiki/Installation#api-keys
+    -h, --help            show this help message and exit
+   
+   
+    -d DOMAIN, --domain DOMAIN [Company name or domain to search]
+               
+               
+    -l LIMIT, --limit LIMIT [Limit the number of search results, default=500]
+         
+         
+    -S START, --start START [Start with result number X, default=0]
+    
+    
+    -g, --google-dork [Use Google Dorks for Google search]
+   
+   
+    -p, --proxies [Use proxies for requests, enter proxies in proxies.yaml]
+   
+   
+    -s, --shodan [Use Shodan to query discovered hosts]
+   
+   
+    --screenshot SCREENSHOT [Take screenshots of resolved domains specify output directory: --screenshot output_directory]
+                
+                
+    -v, --virtual-host [Verify host name via DNS resolution and search for virtual hosts]
+                   
+                   
+    -e DNS_SERVER, --dns-server DNS_SERVER [DNS server to use for lookup]
+                      
+                      
+    -t DNS_TLD, --dns-tld DNS_TLD [Perform a DNS TLD expansion discovery, default False]
+                
+                
+    -r, --take-over [Check for takeovers]
+   
+   
+    -n, --dns-lookup [Enable DNS server lookup, default False]
+  
+  
+    -c, --dns-brute [Perform a DNS brute force on the domain]
+    
+    
+    -f FILENAME, --filename FILENAME [Save the results to an XML and JSON file]
+                       
+                       
+    -b SOURCE, --source SOURCE [anubis, baidu, bing, binaryedge, bingapi, bufferoverun, censys, certspotter, zoomeye
+                               crtsh, dnsdumpster, duckduckgo, fullhunt, github-code, google, hackertarget, hunter,                                    
+                               intelx, linkedin, linkedin_links, n45ht, omnisint, otx, pentesttools, projectdiscovery,                                
+                               qwant, rapiddns, rocketreach, securityTrails, spyse, sublist3r, threatcrowd, yahoo, 
+                               threatminer, trello, twitter, urlscan, virustotal]
+                               
+     
 
-* bevigil - Free upto 50 queries. Pricing can be found here: https://bevigil.com/pricing/osint
-* binaryedge - $10/month
-* bing
-* bufferoverun - uses the free api
-* censys - API keys are required and can be retrieved from your [Censys account](https://search.censys.io/account/api).
-* fullhunt
-* github
-* hunter - limited to 10 on the free plan, so you will need to do -l 10 switch
-* intelx
-* pentesttools - $
-* projecdiscovery - invite only for now
-* rocketreach - $
-* securityTrails
-* shodan - $
-* zoomeye
+    -h: Use SHODAN database to query discovered hosts.
 
-Install and dependencies:
--------------------------
-* Python 3.10+
-* https://github.com/laramies/theHarvester/wiki/Installation
-
-
-Comments, bugs, and requests:
------------------------------
-* [![Twitter Follow](https://img.shields.io/twitter/follow/laramies.svg?style=social&label=Follow)](https://twitter.com/laramies) Christian Martorella @laramies
-  cmartorella@edge-security.com
-* [![Twitter Follow](https://img.shields.io/twitter/follow/NotoriousRebel1.svg?style=social&label=Follow)](https://twitter.com/NotoriousRebel1) Matthew Brown @NotoriousRebel1
-* [![Twitter Follow](https://img.shields.io/twitter/follow/jay_townsend1.svg?style=social&label=Follow)](https://twitter.com/jay_townsend1) Jay "L1ghtn1ng" Townsend @jay_townsend1
-
-
-Main contributors:
-------------------
-* [![Twitter Follow](https://img.shields.io/twitter/follow/NotoriousRebel1.svg?style=social&label=Follow)](https://twitter.com/NotoriousRebel1) Matthew Brown @NotoriousRebel1
-* [![Twitter Follow](https://img.shields.io/twitter/follow/jay_townsend1.svg?style=social&label=Follow)](https://twitter.com/jay_townsend1) Jay "L1ghtn1ng" Townsend @jay_townsend1
-* [![Twitter Follow](https://img.shields.io/twitter/follow/discoverscripts.svg?style=social&label=Follow)](https://twitter.com/discoverscripts) Lee Baird @discoverscripts
-
-
-Thanks:
--------
-* John Matherly - Shodan project
-* Ahmed Aboul Ela - subdomain names dictionaries (big and small)
+# Examples
+To list available options
+        
+        
+     To search emails : $ theHarvester.py -d abc.com -b all
+        
+     To search emails with a limit : $ theHarvester.py -d abc.com -b all -l 200
+        
+     To save the result into an html file : $ theharvester -d abc.com -b all -h myresults.html
+        
+     To search in PGP(Pretty Good Privacy) only : $ theharvester -d abc.com -b pgp     
